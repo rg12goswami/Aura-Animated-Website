@@ -1,0 +1,944 @@
+/* =========================================
+   AURA — STAIRCASE → PAPER SHATTER → CTA
+========================================= */
+
+.depth-journey-section {
+  position: relative;
+  height: 310svh;
+  min-height: 2100px;
+  background: #EAE1D5;
+  color: #242321;
+}
+
+.depth-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  height: 100svh;
+  min-height: 680px;
+  overflow: hidden;
+  background: #EAE1D5;
+  color: #242321;
+  perspective: 1200px;
+}
+
+.depth-topline,
+.depth-cta-topline {
+  position: absolute;
+  z-index: 8;
+  top: 28px;
+  right: 5%;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.depth-topline {
+  color: #242321;
+}
+
+/* -----------------------------------------
+   STAIRCASE — preserve the existing positions
+----------------------------------------- */
+
+.depth-staircase {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.depth-step {
+  position: absolute;
+  width: clamp(220px, 20vw, 300px);
+  min-height: 178px;
+  padding: 23px;
+  overflow: visible;
+  border: 1px solid rgb(36 35 33 / 7%);
+  background: #F8F6F0;
+  color: #242321;
+  box-shadow: 0 16px 42px rgb(36 35 33 / 5%);
+  transform-style: preserve-3d;
+  will-change: transform, opacity, background-color;
+}
+
+/* These positions preserve the current diagonal card arrangement. */
+
+.depth-step:nth-child(1) {
+  top: 23%;
+  left: 4%;
+}
+
+.depth-step:nth-child(2) {
+  top: 36%;
+  left: 22%;
+}
+
+.depth-step:nth-child(3) {
+  top: 49%;
+  left: 40%;
+}
+
+.depth-step:nth-child(4) {
+  top: 62%;
+  left: 58%;
+}
+
+.depth-step-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(30px, 3.3vw, 46px);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.075em;
+  overflow-wrap: break-word;
+  will-change: transform, opacity;
+}
+
+.depth-step-content span {
+  color: var(--step-accent, #C64D3B);
+}
+
+.depth-step--coral {
+  --step-accent: #C64D3B;
+}
+
+.depth-step--sage {
+  --step-accent: #659681;
+}
+
+.depth-step--lilac {
+  --step-accent: #8A76B3;
+}
+
+.depth-step--amber {
+  --step-accent: #B78336;
+}
+
+.depth-step-tile {
+  position: absolute;
+  z-index: 1;
+  right: -13px;
+  bottom: -13px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(255 255 255 / 75%);
+  background: var(--step-accent);
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.depth-step-tile span {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgb(255 255 255 / 60%);
+}
+
+/* -----------------------------------------
+   PAPER FRAGMENTS
+   Each card breaks into 20 separate pieces.
+----------------------------------------- */
+
+.depth-paper-fragments {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.depth-paper-piece {
+  position: absolute;
+  display: block;
+  border: 1px solid rgb(255 255 255 / 85%);
+  background: #F8F6F0;
+  box-shadow: 0 3px 8px rgb(36 35 33 / 4%);
+  transform-origin: center center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Irregular cuts make the fragments feel like paper, not a grid. */
+
+.depth-paper-piece--0 {
+  clip-path: polygon(3% 0, 94% 4%, 100% 91%, 7% 100%);
+}
+
+.depth-paper-piece--1 {
+  clip-path: polygon(0 5%, 97% 0, 94% 100%, 4% 91%);
+}
+
+.depth-paper-piece--2 {
+  clip-path: polygon(4% 0, 100% 8%, 93% 95%, 0 100%);
+}
+
+.depth-paper-piece--3 {
+  clip-path: polygon(0 0, 96% 4%, 100% 100%, 5% 93%);
+}
+
+.depth-paper-piece--4 {
+  clip-path: polygon(6% 3%, 100% 0, 92% 94%, 0 100%);
+}
+
+/* Colored pieces are scattered amongst the cream fragments. */
+
+.depth-paper-piece:nth-child(7n) {
+  background: #ECA08C;
+}
+
+.depth-paper-piece:nth-child(11n) {
+  background: #B9DCCB;
+}
+
+.depth-paper-piece:nth-child(13n) {
+  background: #CDC2E7;
+}
+
+.depth-paper-piece:nth-child(17n) {
+  background: #F1D08B;
+}
+
+/* -----------------------------------------
+   HEADING — below the cards, never over them
+----------------------------------------- */
+
+.depth-final-message {
+  position: absolute;
+  z-index: 6;
+  bottom: 4%;
+  left: 5%;
+  width: min(48%, 690px);
+  color: #C64D3B;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.depth-final-message > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #C64D3B;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.35px;
+}
+
+.depth-final-message h2 {
+  margin: 0;
+  font-size: clamp(38px, 4.6vw, 64px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+}
+
+.depth-final-message p {
+  margin: 10px 0 0;
+  color: #777066;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.depth-footer {
+  position: absolute;
+  z-index: 8;
+  right: 5%;
+  bottom: 18px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #82776C;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Preserve the previous section's landing point. */
+
+.depth-letter-target {
+  position: absolute;
+  z-index: 9;
+  top: 72%;
+  left: 50%;
+  width: 84px;
+  height: 19px;
+  border: 1px solid #6F482D;
+  border-radius: 999px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(0.6);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 4px,
+      rgb(88 49 26 / 30%) 4px 5px,
+      transparent 5px 8px
+    ),
+    linear-gradient(
+      180deg,
+      #E4BC83 0%,
+      #B9824C 30%,
+      #966039 57%,
+      #C18A53 78%,
+      #7A4B2D 100%
+    );
+  box-shadow:
+    inset 0 2px 2px rgb(255 235 195 / 65%),
+    inset 0 -3px 4px rgb(66 37 20 / 40%),
+    0 8px 12px rgb(0 0 0 / 12%);
+}
+
+.depth-letter-target.is-landed {
+  visibility: visible;
+  opacity: 1;
+  animation: depth-log-land 420ms cubic-bezier(.2, .8, .3, 1.3) both;
+}
+
+@keyframes depth-log-land {
+  0% {
+    transform: translate(-50%, -50%) rotate(-12deg) scale(.6);
+  }
+  55% {
+    transform: translate(-50%, -65%) rotate(7deg) scale(1.08);
+  }
+  78% {
+    transform: translate(-50%, -47%) rotate(-3deg) scale(.98);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+}
+
+/* =========================================
+   FINAL CTA — hidden underneath the paper
+========================================= */
+
+.depth-cta-layer {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #202522;
+  color: #F7F5F0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.depth-cta-topline {
+  color: #F7F5F0;
+}
+
+.depth-cta-topline span:nth-child(2) {
+  color: #ABB4AC;
+  text-align: center;
+}
+
+/* CTA copy layers above the bouncing shapes. */
+
+.depth-cta-content {
+  position: absolute;
+  z-index: 4;
+  top: 14%;
+  right: 5%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.depth-cta-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 0 24px;
+  color: #E7A08F;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.45px;
+}
+
+.depth-cta-eyebrow i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #F4B09C;
+}
+
+.depth-cta-heading {
+  margin: 0;
+  font-size: clamp(66px, 10.2vw, 145px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.095em;
+}
+
+.depth-cta-heading span {
+  color: #F4B09C;
+}
+
+.depth-cta-copy {
+  max-width: 390px;
+  margin: 23px 0 0;
+  color: #B7BDB5;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.depth-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 10px 11px 10px 20px;
+  border-radius: 999px;
+  background: #F7F5F0;
+  color: #242321;
+  font-size: 10px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background 180ms ease;
+  pointer-events: auto;
+}
+
+.depth-cta-link span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: #D94F38;
+  color: white;
+  transition: transform 180ms ease;
+}
+
+.depth-cta-link:hover {
+  background: #F4B09C;
+}
+
+.depth-cta-link:hover span {
+  transform: rotate(45deg);
+}
+
+/* Particle field */
+.depth-cta-particle-field {
+  position: absolute;
+  z-index: 2;
+  inset: 43% -2% -1%;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.depth-cta-particle {
+  position: absolute;
+  display: block;
+  border: 1px solid rgb(255 255 255 / 56%);
+  background: var(--particle-color);
+  box-shadow:
+    inset 2px 2px 5px rgb(255 255 255 / 45%),
+    0 3px 8px rgb(0 0 0 / 9%);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: depth-cta-bounce var(--particle-duration, 3s) ease-in-out infinite;
+  animation-delay: var(--particle-delay, 0s);
+}
+
+.depth-cta-particle--orb {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 29% 22%, white 0%, rgb(255 255 255 / 38%) 18%, transparent 34%),
+    radial-gradient(circle at 38% 33%, var(--particle-color) 0%, var(--particle-shadow) 95%);
+  box-shadow:
+    inset -3px -5px 9px rgb(20 20 20 / 11%),
+    inset 2px 2px 7px rgb(255 255 255 / 65%),
+    0 4px 8px rgb(0 0 0 / 7%);
+}
+
+.depth-cta-particle--diamond {
+  border-radius: 3px;
+}
+
+.depth-cta-particle--triangle {
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.depth-cta-particle--ring {
+  border: 3px solid var(--particle-color);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 5%);
+}
+
+.depth-cta-particle--hexagon {
+  border-radius: 2px;
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+}
+
+.depth-cta-particle--blob {
+  border-radius: 36% 64% 55% 45% / 45% 35% 65% 55%;
+  background:
+    radial-gradient(circle at 28% 20%, rgb(255 255 255 / 85%), transparent 30%),
+    linear-gradient(135deg, var(--particle-color), var(--particle-shadow));
+}
+
+@keyframes depth-cta-bounce {
+  0% {
+    transform: translate3d(0, 12px, 0) rotate(var(--particle-rotation)) scale(.94);
+  }
+  25% {
+    transform: translate3d(calc(var(--particle-drift) * .38), -12px, 0) rotate(calc(var(--particle-rotation) + 13deg)) scale(1.03);
+  }
+  50% {
+    transform: translate3d(var(--particle-drift), -30px, 0) rotate(calc(var(--particle-rotation) + 27deg)) scale(.98);
+  }
+  75% {
+    transform: translate3d(calc(var(--particle-drift) * .47), -8px, 0) rotate(calc(var(--particle-rotation) + 12deg)) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0, 12px, 0) rotate(var(--particle-rotation)) scale(.94);
+  }
+}
+
+.depth-cta-bottom {
+  position: absolute;
+  z-index: 4;
+  right: 5%;
+  bottom: 18px;
+  left: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: #ABB4AC;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .depth-step {
+    width: 21vw;
+    min-height: 160px;
+    padding: 17px;
+  }
+
+  .depth-step h2 {
+    font-size: clamp(27px, 3vw, 35px);
+  }
+
+  .depth-cta-heading {
+    font-size: clamp(66px, 10vw, 100px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .depth-journey-section {
+    height: 300svh;
+    min-height: 2000px;
+  }
+
+  .depth-stage {
+    min-height: 660px;
+  }
+
+  .depth-topline,
+  .depth-cta-topline {
+    top: 21px;
+    font-size: 6px;
+    letter-spacing: .6px;
+  }
+
+  .depth-step {
+    left: 9%;
+    width: 82%;
+    max-width: 340px;
+    min-height: 155px;
+    padding: 18px;
+  }
+
+  .depth-step:nth-child(1) {
+    top: 22%;
+    left: 9%;
+  }
+
+  .depth-step:nth-child(2) {
+    top: 33%;
+    left: 9%;
+  }
+
+  .depth-step:nth-child(3) {
+    top: 44%;
+    left: 9%;
+  }
+
+  .depth-step:nth-child(4) {
+    top: 55%;
+    left: 9%;
+  }
+
+  .depth-step h2 {
+    font-size: clamp(28px, 7.5vw, 41px);
+  }
+
+  .depth-final-message {
+    bottom: 4%;
+    left: 6%;
+    width: 88%;
+  }
+
+  .depth-final-message h2 {
+    font-size: clamp(35px, 8.8vw, 56px);
+  }
+
+  .depth-letter-target {
+    top: 65%;
+    left: 50%;
+    width: 68px;
+    height: 16px;
+  }
+
+  .depth-cta-content {
+    top: 17%;
+    right: 5%;
+    left: 5%;
+  }
+
+  .depth-cta-eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .depth-cta-heading {
+    font-size: clamp(50px, 12vw, 78px);
+    line-height: .87;
+  }
+
+  .depth-cta-copy {
+    max-width: 300px;
+    font-size: 11px;
+  }
+
+  .depth-cta-particle-field {
+    inset: 52% -2% -1%;
+  }
+
+  .depth-cta-bottom {
+    bottom: 15px;
+    font-size: 6px;
+    letter-spacing: .5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-journey-section {
+    height: auto;
+    min-height: 0;
+  }
+
+  .depth-stage {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .depth-step,
+  .depth-paper-piece {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .depth-cta-layer {
+    position: relative;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: 100svh;
+  }
+
+  .depth-cta-particle {
+    animation: none !important;
+  }
+}
+/* =========================================
+   BACK TO HOME — BOOK PAGE TRANSITION
+========================================= */
+
+.depth-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 24px;
+  pointer-events: auto;
+}
+
+.depth-cta-actions .depth-cta-link {
+  margin-top: 0;
+}
+
+.depth-cta-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 17px;
+  border: 1px solid rgb(247 245 240 / 32%);
+  border-radius: 999px;
+  background: transparent;
+  color: #F7F5F0;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.depth-cta-home svg:last-child {
+  transition: transform 200ms ease;
+}
+
+.depth-cta-home:hover {
+  border-color: #F4B09C;
+  background: #F4B09C;
+  color: #202522;
+}
+
+.depth-cta-home:hover svg:last-child {
+  transform: translate(3px, -3px);
+}
+
+/* Full-screen animated book */
+
+.home-page-transition {
+  position: fixed;
+  z-index: 999999;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  perspective: 1800px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  background: #EAE1D5;
+}
+
+.home-page-leaf {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow:
+    inset -18px 0 28px rgb(36 35 33 / 9%),
+    8px 0 24px rgb(36 35 33 / 7%);
+  will-change: transform;
+}
+
+/* =========================================
+   AURA — MULTI-PAGE BOOK FLIP
+========================================= */
+
+.home-page-transition {
+  position: fixed;
+  z-index: 999999;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  perspective: 2000px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  background: #D9CCBA;
+}
+
+/* Deep central binding / book spine */
+.home-book-spine {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(18px, 3vw, 42px);
+  background:
+    linear-gradient(
+      90deg,
+      #786956 0%,
+      #C1B19A 22%,
+      #F7F5F0 56%,
+      #C8B9A3 100%
+    );
+  box-shadow:
+    12px 0 30px rgb(36 35 33 / 20%),
+    inset -5px 0 10px rgb(36 35 33 / 14%);
+  pointer-events: none;
+}
+
+/* Every sheet turns independently from the left-hand spine. */
+.home-page-leaf {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border-right: 1px solid rgb(122 102 78 / 55%);
+  box-shadow:
+    inset -18px 0 25px rgb(36 35 33 / 9%),
+    5px 0 12px rgb(36 35 33 / 7%);
+  will-change: transform;
+}
+
+/* Different paper shades create depth between pages. */
+.home-page-leaf--0 {
+  background: linear-gradient(
+    90deg,
+    #B7A893 0%,
+    #F7F5F0 4%,
+    #F7F5F0 94%,
+    #DFD5C7 100%
+  );
+}
+
+.home-page-leaf--1 {
+  background: linear-gradient(
+    90deg,
+    #D94F38 0%,
+    #F4B09C 5%,
+    #F8E5DB 92%,
+    #D8B2A1 100%
+  );
+}
+
+.home-page-leaf--2 {
+  background: linear-gradient(
+    90deg,
+    #98B9A7 0%,
+    #D9E8DD 5%,
+    #F3F1E8 92%,
+    #BED0C2 100%
+  );
+}
+
+.home-page-leaf--3 {
+  background: linear-gradient(
+    90deg,
+    #C9BDE1 0%,
+    #F1EAF8 5%,
+    #F7F5F0 92%,
+    #D8CDE8 100%
+  );
+}
+
+/* Reverse face visible as a page turns around. */
+.home-page-leaf::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  transform-origin: center center;
+  backface-visibility: hidden;
+  border-left: 1px solid rgb(122 102 78 / 14%);
+  background:
+    linear-gradient(
+      90deg,
+      #D8CCBA 0%,
+      #FBF9F4 4%,
+      #F7F5F0 90%,
+      #E1D8CC 100%
+    );
+  box-shadow: inset 24px 0 30px rgb(36 35 33 / 8%);
+}
+
+/* Fine paper grain and a light crease near each edge. */
+.home-page-leaf::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(12px, 2vw, 28px);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 50%),
+    rgb(99 79 57 / 12%)
+  );
+  pointer-events: none;
+}
+
+/* Book title */
+.home-page-transition-label {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  max-width: 90%;
+  color: #242321;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.home-page-transition-label span {
+  color: #786E66;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.home-page-transition-label strong {
+  font-size: clamp(40px, 8vw, 95px);
+  font-weight: 750;
+  line-height: 0.9;
+  letter-spacing: -0.085em;
+}
+
+@media (max-width: 700px) {
+  .home-book-spine {
+    width: 16px;
+  }
+
+  .home-page-transition-label span {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page-transition {
+    display: none !important;
+  }
+}

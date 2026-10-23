@@ -1,0 +1,1491 @@
+
+@import "tailwindcss";
+
+:root {
+  --ivory: #f4efe5;
+  --ink: #24211f;
+  --muted: #716960;
+  --crimson: #c82f3d;
+  --coral: #f17c61;
+  --sage: #a3b49a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ivory);
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--crimson);
+  color: var(--ivory);
+}
+
+/* NAVBAR */
+
+.site-navbar {
+  position: relative;
+  z-index: 20;
+  padding: 20px 5%;
+}
+
+.site-navbar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: auto;
+  padding: 12px 20px;
+  border: 1px solid rgb(36 33 31 / 7%);
+  border-radius: 100px;
+  background: rgb(255 255 255 / 48%);
+  backdrop-filter: blur(20px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--crimson);
+  color: white;
+}
+
+.brand-dot {
+  color: var(--crimson);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.nav-links a,
+.nav-cta,
+.primary-cta {
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--crimson);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 19px;
+  border-radius: 100px;
+  background: var(--ink);
+  color: white;
+  font-size: 13px;
+}
+
+.nav-cta:hover {
+  background: var(--crimson);
+}
+
+/* HERO — editorial composition with a short scroll-controlled exit */
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  min-height: 150svh;
+  padding: 0 5%;
+  overflow: clip;
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  min-height: 690px;
+  height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 46px 0 28px;
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.crimson-dot,
+.sage-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--crimson);
+}
+
+.hero-title-wrap {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  transform-origin: 18% 50%;
+  will-change: transform;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(58px, 7.35vw, 116px);
+  font-weight: 700;
+  line-height: 0.84;
+  letter-spacing: -0.09em;
+}
+
+.hero-title-mask {
+  display: block;
+  overflow: hidden;
+  padding: 0.07em 0.08em 0.13em 0;
+}
+
+.hero-title-line {
+  display: block;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.hero-title-accent {
+  color: var(--crimson);
+}
+
+.hero-title-aside {
+  position: absolute;
+  right: -108px;
+  bottom: 8px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  transform: rotate(-7deg);
+}
+
+.hero-copy {
+  max-width: 405px;
+  margin: 27px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 27px;
+}
+
+.primary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 21px;
+  border-radius: 4px;
+  background: var(--crimson);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.primary-cta:hover {
+  transform: translateY(-3px);
+  background: var(--ink);
+}
+
+.hero-side-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* The line and 3D object form one layered, editorial composition. */
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  height: min(590px, 72svh);
+  transform-origin: 50% 45%;
+  will-change: transform;
+}
+
+.scene3d-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.scene3d {
+  width: 100%;
+  height: 100%;
+}
+
+.scene3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+.flowing-line {
+  position: absolute;
+  z-index: 2;
+  inset: -3% -7% 0 -7%;
+  width: 114%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-path {
+  filter: none;
+}
+
+.hero-index {
+  position: absolute;
+  top: 4%;
+  right: 1%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.hero-index span {
+  color: var(--crimson);
+}
+
+.hero-index i {
+  width: 25px;
+  height: 1px;
+  background: var(--crimson);
+}
+
+.hero-edge-note {
+  position: absolute;
+  right: 0;
+  bottom: 35%;
+  color: rgb(36 33 31 / 38%);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  writing-mode: vertical-rl;
+}
+
+/* FLOATING GLASS CARD */
+
+.floating-card-scene {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.consultation-card {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  width: min(340px, 84%);
+  padding: 25px;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 25px;
+  background: rgb(255 255 255 / 72%);
+  box-shadow:
+    0 30px 75px rgb(56 41 31 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 85%);
+  backdrop-filter: blur(24px);
+  transform-style: preserve-3d;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.card-topline,
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}
+
+.card-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 15px;
+  background: #e3e9dd;
+  color: #4d6748;
+}
+
+.consultation-card h3 {
+  margin: 23px 0 9px;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -1.1px;
+}
+
+.consultation-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.card-divider {
+  height: 1px;
+  margin: 20px 0 14px;
+  background: rgb(36 33 31 / 8%);
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.card-footer a {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--crimson);
+  color: white;
+  transition: transform 0.3s;
+}
+
+.card-footer a:hover {
+  transform: rotate(45deg);
+}
+
+.orbit-decoration {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  border: 1px solid rgb(200 47 61 / 18%);
+  border-radius: 50%;
+}
+
+.orbit-one {
+  top: 12%;
+  left: 4%;
+}
+
+.orbit-two {
+  right: 4%;
+  bottom: 17%;
+  width: 38px;
+  height: 38px;
+  border-color: rgb(163 180 154 / 70%);
+}
+
+.floating-note {
+  position: absolute;
+  right: 0;
+  bottom: 23px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 50px;
+  background: rgb(255 255 255 / 65%);
+  box-shadow: 0 10px 30px rgb(36 33 31 / 5%);
+  backdrop-filter: blur(15px);
+  font-size: 10px;
+  pointer-events: auto;
+}
+
+.sage-dot {
+  background: var(--sage);
+}
+
+/* SCROLL CUE */
+.hero-scroll {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  will-change: transform, opacity;
+}
+
+.hero-scroll-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgb(36 33 31 / 15%);
+  border-radius: 50%;
+}
+
+/* KINETIC TYPOGRAPHY */
+
+.kinetic-section {
+  position: relative;
+  padding: 120px 0 100px;
+  overflow: hidden;
+  background: #eae3d7;
+}
+
+.kinetic-intro {
+  padding: 0 8%;
+}
+
+.section-eyebrow {
+  color: var(--crimson);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.kinetic-heading {
+  margin: 24px 0 45px;
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.075em;
+}
+
+.kinetic-heading span {
+  color: var(--crimson);
+}
+
+.kinetic-marquee {
+  width: 100%;
+  padding: 24px 0;
+  overflow: hidden;
+  border-top: 1px solid rgb(36 33 31 / 12%);
+  border-bottom: 1px solid rgb(36 33 31 / 12%);
+}
+
+.kinetic-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.kinetic-track span {
+  flex-shrink: 0;
+  padding-right: 30px;
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+
+.kinetic-track i {
+  padding: 0 15px;
+  color: var(--crimson);
+  font-style: normal;
+}
+
+.kinetic-description {
+  max-width: 480px;
+  margin: 45px 8% 0 auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .hero-title-aside { right: -76px; }
+  .hero-title { font-size: clamp(56px, 7.1vw, 90px); }
+}
+
+@media (max-width: 900px) {
+  .hero-section { min-height: 140svh; }
+  .hero-stage { min-height: 660px; padding-top: 38px; }
+  .hero-layout { grid-template-columns: 1fr; gap: 0; }
+  .hero-title { font-size: clamp(66px, 12vw, 104px); }
+  .hero-title-aside { right: -95px; }
+  .hero-copy { max-width: 440px; }
+  .hero-visual { width: min(100%, 590px); height: 390px; margin: -2px auto 0; }
+  .hero-scroll { margin-top: 0; }
+  .hero-edge-note { bottom: 27%; }
+}
+
+@media (max-width: 560px) {
+  .site-navbar { padding: 12px 4%; }
+  .site-navbar nav { padding: 10px 12px; }
+  .brand { gap: 6px; font-size: 17px; }
+  .nav-cta { gap: 5px; padding: 11px 13px; font-size: 11px; }
+  .nav-links { display: none; }
+
+  .hero-section { min-height: auto; padding: 0 5%; overflow: hidden; }
+  .hero-stage { position: relative; top: auto; display: flex; height: auto; min-height: 0; padding: 48px 0 24px; overflow: visible; }
+  .hero-kicker { margin-bottom: 23px; font-size: 8px; letter-spacing: 1.25px; }
+  .hero-title { font-size: clamp(48px, 11.3vw, 66px); letter-spacing: -0.085em; }
+  .hero-title-aside { right: 0; bottom: -31px; font-size: 9px; transform: rotate(-5deg) translateX(15%); }
+  .hero-copy { max-width: 340px; margin-top: 42px; font-size: 14px; line-height: 1.8; }
+  .hero-actions { gap: 13px; margin-top: 22px; }
+  .primary-cta { padding: 14px 17px; }
+  .hero-side-note { font-size: 10px; }
+  .hero-visual { height: 310px; margin-top: 8px; }
+  .hero-index { top: 1%; right: 4%; font-size: 8px; }
+  .hero-edge-note { display: none; }
+  .consultation-card { bottom: 12px; left: 0; width: 82%; padding: 17px; border-radius: 18px; }
+  .consultation-card h3 { margin-top: 16px; font-size: 20px; }
+  .consultation-card p { font-size: 11px; }
+  .card-divider { margin: 14px 0 10px; }
+  .card-eyebrow { font-size: 9px; }
+  .floating-note { right: 0; bottom: 2px; padding: 10px 12px; font-size: 9px; }
+  .orbit-one { width: 52px; height: 52px; }
+  .hero-scroll { margin-top: 2px; font-size: 8px; letter-spacing: 1px; }
+  .kinetic-section { padding: 85px 0 70px; }
+  .kinetic-heading { font-size: clamp(45px, 11vw, 65px); }
+  .kinetic-description { margin-top: 30px; font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+/* =========================================
+   AURA — SCROLL STORY + FAN-OUT CARDS
+========================================= */
+
+.journey-section {
+  position: relative;
+  height: 158svh;
+  min-height: 1050px;
+  background: var(--ivory);
+}
+
+.journey-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  height: 100svh;
+  min-height: 680px;
+  padding: 34px 5% 26px;
+  overflow: hidden;
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+.journey-topline,
+.journey-footer {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.journey-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+}
+
+.journey-eyebrow i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--crimson);
+}
+
+.journey-counter {
+  color: currentColor;
+  opacity: 0.65;
+}
+
+/* Oversized typography */
+
+.journey-heading-wrap {
+  position: relative;
+  z-index: 4;
+  max-width: 1440px;
+  margin: clamp(42px, 7vh, 76px) auto 0;
+}
+
+.journey-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  font-size: clamp(72px, 11vw, 158px);
+  font-weight: 750;
+  line-height: 0.77;
+  letter-spacing: -0.095em;
+  text-transform: uppercase;
+}
+
+.journey-title-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  will-change: transform, opacity;
+}
+
+.journey-title-line--two {
+  margin-left: clamp(18px, 11vw, 160px);
+  color: var(--crimson);
+}
+
+.journey-description {
+  max-width: 300px;
+  margin: 25px 0 0 clamp(20px, 11.5vw, 166px);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Oversized type behind the cards */
+
+.journey-watermark {
+  position: absolute;
+  z-index: 1;
+  top: 32%;
+  left: -2%;
+  color: rgb(255 248 239 / 13%);
+  font-size: clamp(110px, 20vw, 300px);
+  font-weight: 800;
+  line-height: 0.72;
+  letter-spacing: -0.105em;
+  white-space: nowrap;
+  pointer-events: none;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* The flowing line sits behind the cards */
+
+.journey-line {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Fan-out card deck */
+
+.journey-card-deck {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+}
+
+.journey-card {
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  width: clamp(200px, 18vw, 270px);
+  min-height: 302px;
+  padding: clamp(18px, 2vw, 27px);
+  border: 1px solid rgb(36 35 33 / 7%);
+  border-radius: 5px;
+  background: #f8f6f0;
+  color: #242321;
+  box-shadow: 0 24px 55px rgb(80 29 21 / 13%);
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.journey-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 29px;
+}
+
+.journey-card-number,
+.journey-card-label {
+  color: #80766d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+.journey-card-icon {
+  display: grid;
+  width: 41px;
+  height: 41px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8e5da;
+  color: var(--crimson);
+}
+
+.journey-card-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--crimson);
+}
+
+.journey-card h3 {
+  margin: 0 0 12px;
+  font-size: clamp(21px, 2vw, 27px);
+  font-weight: 650;
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.journey-card p {
+  margin: 0;
+  color: #716960;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.journey-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 20px;
+  color: #716960;
+  font-size: 9px;
+}
+
+.journey-card-bottom a {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--crimson);
+  color: white;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.journey-card-bottom a:hover {
+  transform: rotate(45deg);
+  background: var(--ink);
+}
+
+/* Small footer inside the pinned stage */
+
+.journey-footer {
+  position: absolute;
+  right: 5%;
+  bottom: 28px;
+  left: 5%;
+  max-width: none;
+  margin: 0;
+  color: #fff8ef;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .journey-heading {
+    font-size: clamp(70px, 10vw, 104px);
+  }
+
+  .journey-description {
+    margin-left: 12vw;
+  }
+
+  .journey-card {
+    width: 200px;
+    min-height: 286px;
+    padding: 18px;
+  }
+
+  .journey-card h3 {
+    font-size: 22px;
+  }
+}
+
+/* Mobile: the four cards settle into a compact 2x2 layout */
+
+@media (max-width: 760px) {
+  .journey-section {
+    height: 150svh;
+    min-height: 1050px;
+  }
+
+  .journey-stage {
+    min-height: 680px;
+    padding: 22px 5% 24px;
+  }
+
+  .journey-topline,
+  .journey-footer {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .journey-heading-wrap {
+    margin-top: 9vh;
+  }
+
+  .journey-heading {
+    font-size: clamp(49px, 12.5vw, 86px);
+    line-height: 0.82;
+  }
+
+  .journey-title-line--two {
+    margin-left: 6vw;
+  }
+
+  .journey-description {
+    max-width: 220px;
+    margin: 18px 0 0 7vw;
+    font-size: 11px;
+  }
+
+  .journey-watermark {
+    top: 36%;
+    font-size: clamp(90px, 25vw, 170px);
+  }
+
+  .journey-card {
+    top: 63%;
+    width: min(42vw, 180px);
+    min-height: 205px;
+    padding: 13px;
+    border-radius: 4px;
+  }
+
+  .journey-card-top {
+    margin-bottom: 13px;
+  }
+
+  .journey-card-number,
+  .journey-card-label {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .journey-card-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .journey-card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .journey-card h3 {
+    margin-bottom: 7px;
+    font-size: clamp(16px, 4.3vw, 20px);
+  }
+
+  .journey-card p {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .journey-card-bottom {
+    gap: 5px;
+    padding-top: 10px;
+    font-size: 7px;
+  }
+
+  .journey-card-bottom a {
+    width: 25px;
+    height: 25px;
+  }
+
+  .journey-footer {
+    right: 5%;
+    bottom: 18px;
+    left: 5%;
+    gap: 12px;
+  }
+
+  .journey-footer span:last-child {
+    text-align: right;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-section {
+    height: auto;
+    min-height: 0;
+  }
+
+  .journey-stage {
+    position: relative;
+    height: auto;
+    min-height: 760px;
+  }
+}
+/* ==========================================
+   AURA — FLOWING CARD SECTION
+========================================== */
+
+.flow-entry-section {
+  position: relative;
+  height: 175svh;
+  min-height: 1120px;
+  background: var(--ivory);
+}
+
+.flow-entry-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  height: 100svh;
+  min-height: 680px;
+  padding: 34px 5% 28px;
+  overflow: hidden;
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+.flow-entry-topline {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.flow-entry-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+}
+
+.flow-entry-kicker i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--crimson);
+}
+
+.flow-entry-index {
+  opacity: .65;
+}
+
+/* Oversized kinetic text */
+
+.flow-entry-heading {
+  position: relative;
+  z-index: 4;
+  max-width: 1440px;
+  margin: clamp(52px, 8vh, 92px) auto 0;
+}
+
+.flow-entry-heading h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  font-size: clamp(68px, 10.1vw, 146px);
+  font-weight: 750;
+  line-height: .79;
+  letter-spacing: -.09em;
+  text-transform: uppercase;
+}
+
+.flow-title-mask {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  padding: .04em .1em .12em 0;
+}
+
+.flow-title-row {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  will-change: transform, opacity;
+}
+
+.flow-title-row--two {
+  margin-left: clamp(20px, 10vw, 145px);
+  color: var(--crimson);
+}
+
+.flow-entry-copy {
+  max-width: 330px;
+  margin: 23px 0 0 clamp(24px, 10.5vw, 152px);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.flow-entry-watermark {
+  position: absolute;
+  z-index: 1;
+  top: 41%;
+  left: -3%;
+  color: rgb(255 248 239 / 12%);
+  font-size: clamp(84px, 15.7vw, 225px);
+  font-weight: 800;
+  line-height: .8;
+  letter-spacing: -.095em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* SVG line and curved lettering */
+
+.flow-entry-svg {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-entry-path-type {
+  overflow: visible;
+  fill: #FFF8EF;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+}
+
+/* Orbit behind the main card */
+
+.flow-entry-card-orbit {
+  position: absolute;
+  z-index: 3;
+  top: 57%;
+  left: 50%;
+  width: clamp(330px, 39vw, 570px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 248 239 / 30%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Main travelling appointment card */
+
+.flow-entry-card {
+  position: absolute;
+  z-index: 5;
+  top: 59%;
+  left: 50%;
+  width: min(360px, 88vw);
+  padding: clamp(18px, 2.6vw, 32px);
+  border: 1px solid rgb(36 35 33 / 8%);
+  border-radius: 5px;
+  background: #F8F6F0;
+  color: #242321;
+  box-shadow: 0 30px 90px rgb(75 25 19 / 20%);
+  will-change: transform, width;
+}
+
+.flow-card-top,
+.flow-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.flow-card-label,
+.flow-card-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #766D65;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+}
+
+.flow-card-label svg {
+  color: var(--crimson);
+}
+
+.flow-card-count {
+  opacity: .7;
+}
+
+.flow-card-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(210px, .88fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  padding: 30px 0 26px;
+}
+
+.flow-card-copy-block {
+  min-width: 0;
+}
+
+.flow-card-overline {
+  color: var(--crimson);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.flow-card-copy-block h3 {
+  max-width: 340px;
+  margin: 13px 0 11px;
+  font-size: clamp(29px, 4vw, 51px);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.075em;
+}
+
+.flow-card-copy-block p {
+  max-width: 340px;
+  margin: 0;
+  color: #716960;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Mini consultation UI inside the travelling card */
+
+.flow-appointment-preview {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid rgb(36 35 33 / 9%);
+  border-radius: 4px;
+  background: #F1EEE6;
+}
+
+.flow-doctor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flow-doctor-avatar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #E3C0B3;
+  color: #633A30;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.flow-doctor-row strong,
+.flow-doctor-row span:not(.flow-doctor-status) {
+  display: block;
+}
+
+.flow-doctor-row strong {
+  font-size: 11px;
+  letter-spacing: -.2px;
+}
+
+.flow-doctor-row div:nth-child(2) span {
+  margin-top: 4px;
+  color: #81786E;
+  font-size: 9px;
+}
+
+.flow-doctor-status {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #71977D;
+}
+
+.flow-appointment-details {
+  display: grid;
+  gap: 10px;
+  margin: 21px 0 17px;
+  padding: 16px 0;
+  border-top: 1px solid rgb(36 35 33 / 9%);
+  border-bottom: 1px solid rgb(36 35 33 / 9%);
+}
+
+.flow-appointment-details span,
+.flow-card-bottom span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #635B54;
+  font-size: 10px;
+}
+
+.flow-appointment-details svg {
+  color: var(--crimson);
+}
+
+.flow-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 14px;
+  background: var(--ink);
+  color: white;
+  font-size: 11px;
+  transition: background 180ms ease;
+}
+
+.flow-card-cta:hover {
+  background: var(--crimson);
+}
+
+.flow-card-bottom {
+  padding-top: 16px;
+  border-top: 1px solid rgb(36 35 33 / 9%);
+}
+
+.flow-card-bottom span:last-child {
+  color: #81786E;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.flow-entry-card-caption {
+  position: absolute;
+  z-index: 8;
+  right: 5%;
+  bottom: 27px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #FFF8EF;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Mobile layout */
+
+@media (max-width: 760px) {
+  .flow-entry-section {
+    height: 165svh;
+    min-height: 1000px;
+  }
+
+  .flow-entry-stage {
+    min-height: 660px;
+    padding: 22px 5% 24px;
+  }
+
+  .flow-entry-topline {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .flow-entry-heading {
+    margin-top: 10vh;
+  }
+
+  .flow-entry-heading h2 {
+    font-size: clamp(46px, 11.7vw, 82px);
+    line-height: .84;
+  }
+
+  .flow-title-row--two {
+    margin-left: 5vw;
+  }
+
+  .flow-entry-copy {
+    max-width: 230px;
+    margin: 18px 0 0 6vw;
+    font-size: 11px;
+  }
+
+  .flow-entry-watermark {
+    top: 42%;
+    font-size: 22vw;
+  }
+
+  .flow-entry-path-type {
+    font-size: 18px;
+    letter-spacing: 1.7px;
+  }
+
+  .flow-entry-card-orbit {
+    top: 58%;
+    width: 88vw;
+  }
+
+  .flow-entry-card {
+    top: 61%;
+    padding: 17px;
+  }
+
+  .flow-card-main {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 23px 0 19px;
+  }
+
+  .flow-card-copy-block h3 {
+    max-width: 310px;
+    font-size: clamp(31px, 8vw, 43px);
+  }
+
+  .flow-card-copy-block p {
+    max-width: 330px;
+    font-size: 11px;
+  }
+
+  .flow-appointment-preview {
+    padding: 14px;
+  }
+
+  .flow-appointment-details {
+    margin: 14px 0 13px;
+    padding: 12px 0;
+  }
+
+  .flow-entry-card-caption {
+    bottom: 17px;
+    font-size: 7px;
+    letter-spacing: .8px;
+  }
+
+  .flow-entry-card-caption span:first-child {
+    max-width: 65%;
+  }
+}
+.adaptive-canvas-host {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.adaptive-canvas-host canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.adaptive-canvas-placeholder {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.adaptive-canvas-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #f4efe5;
+  color: #6f655e;
+  font-size: 12px;
+}

@@ -1,0 +1,375 @@
+/* =========================================
+   AURA — PLAYFUL PARTICLE CTA
+========================================= */
+
+.final-cta-section {
+  position: relative;
+  min-height: 100svh;
+  min-height: max(760px, 100svh);
+  overflow: hidden;
+  isolation: isolate;
+  background: #F7F5F0;
+  color: #242321;
+}
+
+.final-cta-topline {
+  position: absolute;
+  z-index: 5;
+  top: 27px;
+  right: 5%;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+.final-cta-topline span:nth-child(2) {
+  color: #8B8177;
+  text-align: center;
+}
+
+.final-cta-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(110px, 16vh, 170px) 5% 240px;
+  text-align: center;
+}
+
+.final-cta-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 0 25px;
+  color: #847A70;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.55px;
+}
+
+.final-cta-eyebrow i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D94F38;
+}
+
+.final-cta-heading {
+  margin: 0;
+  font-size: clamp(66px, 10.4vw, 148px);
+  font-weight: 700;
+  line-height: 0.79;
+  letter-spacing: -0.095em;
+}
+
+.final-cta-heading span {
+  color: #D94F38;
+}
+
+.final-cta-copy {
+  max-width: 375px;
+  margin: 26px 0 0;
+  color: #766E65;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.final-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 26px;
+  padding: 11px 12px 11px 21px;
+  border-radius: 999px;
+  background: #242321;
+  color: #F7F5F0;
+  font-size: 10px;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.final-cta-link > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #D94F38;
+  color: white;
+  transition: transform 180ms ease;
+}
+
+.final-cta-link:hover {
+  transform: translateY(-2px);
+  background: #D94F38;
+}
+
+.final-cta-link:hover > span {
+  transform: rotate(45deg);
+}
+
+/* The field enters from below and fills the lower part of the viewport. */
+
+.final-cta-particle-field {
+  position: absolute;
+  z-index: 2;
+  inset: 43% -2% -1%;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.final-cta-particle {
+  position: absolute;
+  display: block;
+  opacity: 0.96;
+  border: 1px solid rgb(255 255 255 / 56%);
+  background: var(--particle-color);
+  box-shadow:
+    inset 2px 2px 5px rgb(255 255 255 / 45%),
+    0 3px 8px rgb(36 35 33 / 7%);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation-name: final-cta-bounce;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Round glass spheres */
+
+.final-cta-particle--orb {
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 29% 22%,
+      rgb(255 255 255 / 98%) 0%,
+      rgb(255 255 255 / 38%) 18%,
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 38% 33%,
+      var(--particle-color) 0%,
+      var(--particle-shadow) 95%
+    );
+  box-shadow:
+    inset -3px -5px 9px rgb(20 20 20 / 11%),
+    inset 2px 2px 7px rgb(255 255 255 / 65%),
+    0 4px 8px rgb(36 35 33 / 7%);
+}
+
+/* Diamonds */
+
+.final-cta-particle--diamond {
+  border-radius: 3px;
+  transform: rotate(45deg);
+  background: var(--particle-color);
+}
+
+/* Triangles */
+
+.final-cta-particle--triangle {
+  border: 0;
+  border-radius: 0;
+  background: var(--particle-color);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Rings */
+
+.final-cta-particle--ring {
+  border: 3px solid var(--particle-color);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset 1px 1px 3px rgb(255 255 255 / 40%),
+    0 3px 9px rgb(36 35 33 / 5%);
+}
+
+/* Rounded geometric shapes */
+
+.final-cta-particle--hexagon {
+  border-radius: 2px;
+  background: var(--particle-color);
+  clip-path: polygon(
+    25% 0,
+    75% 0,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0 50%
+  );
+}
+
+.final-cta-particle--blob {
+  border-radius: 36% 64% 55% 45% / 45% 35% 65% 55%;
+  background:
+    radial-gradient(
+      circle at 28% 20%,
+      rgb(255 255 255 / 85%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      var(--particle-color),
+      var(--particle-shadow)
+    );
+}
+
+/* Independent bounce with slight lateral drift and rotation */
+
+@keyframes final-cta-bounce {
+  0% {
+    transform:
+      translate3d(0, 12px, 0)
+      rotate(var(--particle-rotation))
+      scale(0.94);
+  }
+
+  24% {
+    transform:
+      translate3d(
+        calc(var(--particle-drift) * 0.38),
+        -12px,
+        0
+      )
+      rotate(calc(var(--particle-rotation) + 13deg))
+      scale(1.03);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        var(--particle-drift),
+        -30px,
+        0
+      )
+      rotate(calc(var(--particle-rotation) + 27deg))
+      scale(0.98);
+  }
+
+  74% {
+    transform:
+      translate3d(
+        calc(var(--particle-drift) * 0.47),
+        -8px,
+        0
+      )
+      rotate(calc(var(--particle-rotation) + 12deg))
+      scale(1.04);
+  }
+
+  100% {
+    transform:
+      translate3d(0, 12px, 0)
+      rotate(var(--particle-rotation))
+      scale(0.94);
+  }
+}
+
+/* Footer */
+
+.final-cta-bottom {
+  position: absolute;
+  z-index: 5;
+  right: 5%;
+  bottom: 21px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #7E7469;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.final-cta-bottom span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .final-cta-heading {
+    font-size: clamp(65px, 11vw, 100px);
+  }
+
+  .final-cta-particle-field {
+    inset-top: 48%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .final-cta-section {
+    min-height: 780px;
+  }
+
+  .final-cta-topline {
+    top: 19px;
+    font-size: 7px;
+    letter-spacing: 0.6px;
+  }
+
+  .final-cta-content {
+    padding: 145px 6% 200px;
+  }
+
+  .final-cta-eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+  }
+
+  .final-cta-heading {
+    font-size: clamp(53px, 12.5vw, 82px);
+    line-height: 0.86;
+  }
+
+  .final-cta-copy {
+    max-width: 300px;
+    margin-top: 20px;
+    font-size: 11px;
+  }
+
+  .final-cta-link {
+    margin-top: 23px;
+    gap: 18px;
+  }
+
+  .final-cta-particle-field {
+    inset: 54% -2% -1%;
+  }
+
+  .final-cta-bottom {
+    bottom: 15px;
+    font-size: 6px;
+    letter-spacing: 0.55px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta-particle {
+    animation: none !important;
+  }
+}

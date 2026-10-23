@@ -1,0 +1,478 @@
+/* =========================================
+   AURA — 3D DOCTOR / PATIENT STORYTELLING
+========================================= */
+
+.doctor-story-section {
+  position: relative;
+  height: 250svh;
+  min-height: 1850px;
+  background: var(--ivory);
+}
+
+.doctor-story-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 660px;
+  padding: 30px 5% 25px;
+  overflow: hidden;
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+.doctor-story-topline {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.45px;
+}
+
+.doctor-story-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+}
+
+.doctor-story-eyebrow i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--crimson);
+}
+
+.doctor-story-index {
+  opacity: 0.62;
+}
+
+/* Main two-column composition */
+
+.doctor-story-layout {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  align-items: center;
+  gap: 2.5%;
+  width: 100%;
+  max-width: 1440px;
+  flex: 1;
+  min-height: 0;
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+.doctor-story-copy-column {
+  position: relative;
+  z-index: 4;
+  min-width: 0;
+  height: 76%;
+}
+
+/* Story beats occupy the same place, changing with scroll */
+
+.doctor-story-beat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.doctor-story-beat-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 23px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.doctor-story-number {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid rgb(36 33 31 / 15%);
+  border-radius: 50%;
+  color: var(--crimson);
+  font-size: 10px;
+}
+
+.doctor-story-heading {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(42px, 4.65vw, 74px);
+  font-weight: 750;
+  line-height: 0.94;
+  letter-spacing: -0.082em;
+  overflow-wrap: normal;
+}
+
+.doctor-story-heading-mask {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.045em 0.06em 0.1em 0;
+}
+
+.doctor-story-headline-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  will-change: transform, clip-path;
+}
+
+.doctor-story-headline-line--two {
+  color: var(--crimson);
+}
+
+.doctor-story-description {
+  max-width: 345px;
+  margin: 25px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+  will-change: transform, opacity;
+}
+
+.doctor-story-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 26px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgb(36 33 31 / 22%);
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.doctor-story-tag svg {
+  color: var(--crimson);
+}
+
+/* Three-dimensional scene */
+
+.doctor-story-scene-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: min(76vh, 780px);
+  min-height: 400px;
+  max-height: 780px;
+  align-self: center;
+}
+
+.doctor-story-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.doctor-story-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+  touch-action: pan-y;
+}
+
+.doctor-story-scene-label {
+  position: absolute;
+  z-index: 4;
+  top: 4%;
+  left: 5%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  pointer-events: none;
+}
+
+.doctor-story-scene-label svg {
+  color: var(--crimson);
+}
+
+.doctor-story-scene-note {
+  position: absolute;
+  z-index: 4;
+  right: 2%;
+  bottom: 5%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(310px, 86%);
+  padding: 15px 16px;
+  border: 1px solid rgb(36 33 31 / 7%);
+  background: rgb(248 246 240 / 91%);
+  box-shadow: 0 15px 40px rgb(36 33 31 / 7%);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+}
+
+.doctor-story-note-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #E8D5CB;
+  color: var(--crimson);
+}
+
+.doctor-story-scene-note strong,
+.doctor-story-scene-note span {
+  display: block;
+}
+
+.doctor-story-scene-note strong {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+
+.doctor-story-scene-note span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.doctor-story-note-heart {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--crimson);
+}
+
+/* Flowing line above the scene background, below the content */
+
+
+
+
+
+/* Section footer */
+
+.doctor-story-footer {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 15px;
+  border-top: 1px solid rgb(36 33 31 / 12%);
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+/* Medium screens */
+
+@media (max-width: 1000px) {
+  .doctor-story-stage {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .doctor-story-layout {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 1%;
+  }
+
+  .doctor-story-heading {
+    font-size: clamp(38px, 5.2vw, 58px);
+  }
+
+  .doctor-story-description {
+    max-width: 290px;
+    font-size: 12px;
+  }
+
+  .doctor-story-scene-note {
+    right: 0;
+    width: min(290px, 95%);
+  }
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+  .doctor-story-section {
+    height: 245svh;
+    min-height: 1740px;
+  }
+
+  .doctor-story-stage {
+    min-height: 650px;
+    padding: 20px 5% 19px;
+  }
+
+  .doctor-story-topline {
+    font-size: 8px;
+    letter-spacing: 0.9px;
+  }
+
+  .doctor-story-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 0;
+    padding-top: 0;
+  }
+
+  .doctor-story-copy-column {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .doctor-story-beat-meta {
+    gap: 9px;
+    margin-bottom: 16px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .doctor-story-number {
+    width: 25px;
+    height: 25px;
+  }
+
+  .doctor-story-heading {
+    font-size: clamp(38px, 9.2vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -0.075em;
+  }
+
+  .doctor-story-description {
+    max-width: 300px;
+    margin-top: 16px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .doctor-story-tag {
+    margin-top: 15px;
+    padding: 8px 0;
+    font-size: 8px;
+  }
+
+  .doctor-story-scene-wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    max-height: none;
+  }
+
+  .doctor-story-scene-label {
+    top: 2%;
+    left: 2%;
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .doctor-story-scene-note {
+    right: 0;
+    bottom: 1%;
+    width: min(270px, 95%);
+    padding: 11px;
+    gap: 9px;
+  }
+
+  .doctor-story-note-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .doctor-story-scene-note strong {
+    font-size: 10px;
+  }
+
+  .doctor-story-scene-note span {
+    font-size: 9px;
+  }
+
+  .doctor-story-path-words {
+    font-size: 17px;
+    letter-spacing: 1.5px;
+  }
+
+  .doctor-story-footer {
+    font-size: 7px;
+    letter-spacing: 0.65px;
+  }
+}
+
+/* Reduced motion / accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .doctor-story-section {
+    height: auto;
+    min-height: 0;
+  }
+
+  .doctor-story-stage {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .doctor-story-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: 720px;
+  }
+
+  .doctor-story-copy-column {
+    height: auto;
+  }
+
+  .doctor-story-beat {
+    position: relative;
+    inset: auto;
+    display: flex;
+    margin: 28px 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .doctor-story-headline-line,
+  .doctor-story-description,
+  .doctor-story-beat-meta {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .doctor-story-flow-svg {
+    opacity: 0.2;
+  }
+}
